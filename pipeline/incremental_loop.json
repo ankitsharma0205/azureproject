@@ -183,8 +183,14 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"container": "bronze",
-													"folder": "@pipeline().parameters.table",
-													"file": "@concat(pipeline().parameters.table,'_',variables('current'))"
+													"folder": {
+														"value": "@item().table",
+														"type": "Expression"
+													},
+													"file": {
+														"value": "@concat(item().table,'_',variables('current'))",
+														"type": "Expression"
+													}
 												}
 											},
 											"enableLogging": false,
